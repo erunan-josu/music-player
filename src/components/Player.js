@@ -6,7 +6,6 @@ import {
   faAngleRight,
   faPause,
 } from '@fortawesome/free-solid-svg-icons'
-import { playAudio } from '../util'
 
 const Player = ({
   audioRef,
@@ -17,7 +16,6 @@ const Player = ({
   isPlaying,
   setIsPlaying,
   songs,
-  setSongs,
   activeLibraryHandler,
 }) => {
   // event handlers
@@ -51,14 +49,13 @@ const Player = ({
         await setCurrentSong(songs[songs.length - 1])
         activeLibraryHandler(songs[songs.length - 1])
         if (isPlaying) audioRef.current.play()
-        /* playAudio(isPlaying, audioRef) */
+
         return
       }
       await setCurrentSong(songs[(currentIndex - 1) % songs.length])
       activeLibraryHandler(songs[(currentIndex - 1) % songs.length])
     }
     if (isPlaying) audioRef.current.play()
-    /* playAudio(isPlaying, audioRef) */
   }
 
   // add styles
